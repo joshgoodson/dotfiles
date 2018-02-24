@@ -23,6 +23,7 @@ alias yip='yadr init-plugins'
 alias psa="ps aux"
 alias psg="ps aux | grep "
 alias psr='ps aux | grep ruby'
+alias psj='ps aux | grep java'
 
 # Moving around
 alias cdb='cd -'
@@ -64,9 +65,15 @@ alias :q='exit'
 
 # vimrc editing
 alias ve='vim ~/.vimrc'
+alias vr='source ~/.vimrc'
+
+# path editing
+alias pe='vim $yadr/zsh/0_path.zsh'
+alias pr='source $yadr/zsh/0_path.zsh'
 
 # zsh profile editing
 alias ze='vim ~/.zshrc'
+alias zr='source $yadr/zsh/prezto/runcoms/zshrc'
 
 # Git Aliases
 alias gs='git status'
@@ -172,14 +179,14 @@ alias rdm='rake db:migrate'
 alias rdmr='rake db:migrate:redo'
 
 # Zeus
-alias zs='zeus server'
-alias zc='zeus console'
-alias zr='zeus rspec'
-alias zrc='zeus rails c'
-alias zrs='zeus rails s'
-alias zrdbm='zeus rake db:migrate'
-alias zrdbtp='zeus rake db:test:prepare'
-alias zzz='rm .zeus.sock; pkill zeus; zeus start'
+#alias zs='zeus server'
+#alias zc='zeus console'
+#alias zr='zeus rspec'
+#alias zrc='zeus rails c'
+#alias zrs='zeus rails s'
+#alias zrdbm='zeus rake db:migrate'
+#alias zrdbtp='zeus rake db:test:prepare'
+#alias zzz='rm .zeus.sock; pkill zeus; zeus start'
 
 # Rspec
 alias rs='rspec spec'
@@ -211,3 +218,32 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
+
+# Python and Pip
+alias pipl='pip list'
+alias pipi='pip install'
+alias pipup='pip install --upgrade'
+alias pipf='pip freeze'
+alias pipun='pip uninstall'
+alias pipconf='vim ~/.pip/pip.conf'
+
+alias mkv='mkvirtualenv'
+alias lsv='lsvirtualenv'
+alias rmv='rmvirtualenv'
+alias cpv='cpvirtualenv'
+alias cdv='cdvirtualenv'
+alias de='deactivate'
+
+# Node and npm
+alias npmig='npm install -g'
+alias npmlg='npm list -g'
+alias npmog='npm outdated -g'
+alias npmupg='npm update -g'
+alias npmung='npm uninstall -g'
+alias npmi='npm install'
+alias npml='npm list'
+alias npmo='npm outdated'
+alias npmup='npm update'
+alias npmun='npm uninstall'
+
+alias fuck='$(thefuck $(fc -ln -1))'
