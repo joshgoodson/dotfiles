@@ -10,7 +10,7 @@ pathAppend() {
 # Remove duplicate entries from PATH:
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
-PATH="/usr/local/opt/python/libexec/bin:$PATH"
-PATH="/usr/local/bin:$PATH"
+pathAppend="/usr/local/opt/python/libexec/bin"
+pathAppend="/usr/local/bin"
 pathAppend "$HOME/.yadr/bin"
 pathAppend "$HOME/.yadr/bin/yadr"
