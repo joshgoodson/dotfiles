@@ -12,5 +12,20 @@ PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS;
 
 pathAppend="/usr/local/opt/python/libexec/bin"
 pathAppend="/usr/local/bin"
+
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+
+pathAppend "$HOME/.ops/bin"
 pathAppend "$HOME/.yadr/bin"
 pathAppend "$HOME/.yadr/bin/yadr"
+pathAppend "$GOPATH"
+pathAppend "$GOROOT"
+pathAppend "node_modules/.bin"
+pathAppend "/usr/local/opt/openssl/bin"
+
+# pathAppend "/usr/local/opt/python/libexec/bin"
+pathAppend "$HOME/.jenv/bin"
+
+
+eval "$(jenv init -)"

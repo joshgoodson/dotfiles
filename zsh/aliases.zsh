@@ -49,7 +49,8 @@ TRAPHUP() {
   source $yadr/zsh/aliases.zsh
 }
 
-alias ae='vim $yadr/zsh/aliases.zsh' #alias edit
+alias ae='code $yadr/zsh/aliases.zsh' #alias edit
+alias aev='vim $yadr/zsh/aliases.zsh'
 alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 alias gar="killall -HUP -u \"$USER\" zsh"  #global alias reload
 
@@ -64,16 +65,19 @@ fi
 alias :q='exit'
 
 # vimrc editing
-alias ve='vim ~/.vimrc'
+alias ve='code ~/.vimrc'
+alias vev='vim ~/.vimrc'
 alias vr='source ~/.vimrc'
 
 # path editing
-alias pe='vim $yadr/zsh/0_path.zsh'
+alias pe='code $yadr/zsh/0_path.zsh'
+alias pev='vim $yadr/zsh/0_path.zsh'
 alias pr='source $yadr/zsh/0_path.zsh'
 
 # zsh profile editing
-alias ze='vim ~/.zshrc'
-alias zr='source $yadr/zsh/prezto/runcoms/zshrc'
+alias ze='code ~/.zshrc'
+alias zev='vim ~/.zshrc'
+alias zr='source ~/.zshrc'
 
 # Git Aliases
 alias gs='git status'
@@ -84,7 +88,8 @@ alias gsa='git stash apply'
 alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
-alias gi='vim .gitignore'
+alias gi='code .gitignore'
+alias giv='vim .gitignore'
 alias gcm='git ci -m'
 alias gcim='git ci -m'
 alias gci='git ci'
@@ -179,14 +184,14 @@ alias rdm='rake db:migrate'
 alias rdmr='rake db:migrate:redo'
 
 # Zeus
-#alias zs='zeus server'
-#alias zc='zeus console'
-#alias zr='zeus rspec'
-#alias zrc='zeus rails c'
-#alias zrs='zeus rails s'
-#alias zrdbm='zeus rake db:migrate'
-#alias zrdbtp='zeus rake db:test:prepare'
-#alias zzz='rm .zeus.sock; pkill zeus; zeus start'
+# alias zs='zeus server'
+# alias zc='zeus console'
+# alias zr='zeus rspec'
+# alias zrc='zeus rails c'
+# alias zrs='zeus rails s'
+# alias zrdbm='zeus rake db:migrate'
+# alias zrdbtp='zeus rake db:test:prepare'
+# alias zzz='rm .zeus.sock; pkill zeus; zeus start'
 
 # Rspec
 alias rs='rspec spec'
@@ -229,12 +234,26 @@ alias pipconf='vim ~/.pip/pip.conf'
 
 alias mkv='mkvirtualenv'
 alias lsv='lsvirtualenv'
+
+# Python and Pip
+alias pl='pip list'
+alias pi='pip install'
+alias pup='pip install --upgrade'
+alias preq='pip install -Ur'
+alias pf='pip freeze'
+alias pun='pip uninstall'
+alias pc='code ~/.pip/pip.conf'
+alias pcv='vim ~/.pip/pip.conf'
+alias mkv='mkvirtualenv'
+alias lsv='lsvirtualenv -b'
 alias rmv='rmvirtualenv'
 alias cpv='cpvirtualenv'
 alias cdv='cdvirtualenv'
 alias de='deactivate'
+alias ave='workon'
+alias pyclean='find . -name "*.pyc" -exec rm -f {} \;'
 
-# Node and npm
+ # Node and npm
 alias npmig='npm install -g'
 alias npmlg='npm list -g'
 alias npmog='npm outdated -g'
@@ -247,3 +266,32 @@ alias npmup='npm update'
 alias npmun='npm uninstall'
 
 alias fuck='$(thefuck $(fc -ln -1))'
+
+alias dl="docker ps -l -q" # Get latest container ID
+alias dcl="docker container ls" # Get list of containers
+alias dps="docker ps" # Get container process
+alias dpa="docker ps -a" # Get process included stop container
+alias drun="docker run" # Run container
+alias di="docker images" # Get images
+alias dil="docker image ls" # Get list of images
+alias dvl="docker volume ls" # Get list of volumes
+alias dnl="docker network ls" # Get list of networks
+alias dinfo="docker info" # System and docker info
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'" # Get container IP
+alias dkd="docker run -d -P" # Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dki="docker run -i -t -P" # Run interactive container, e.g., $dki base /bin/bash
+alias dex="docker exec -i -t" # Execute interactive container, e.g., $dex base /bin/bash
+alias dsp="docker system prune -f" # Removes stopped containers, unused networks, dangling images, and all build cache
+alias dcp="docker container prune" # Prune stopped containers
+alias dvp="docker volume prune" # Prune unused volumes
+alias dip="docker image prune" # Prune unused images
+alias dclogs="docker-compose logs" # Compose logs
+dstop() { docker stop $(docker ps -a -q); } # Stop all containers
+drm() { docker rm $(docker ps -a -q); } # Remove all containers
+alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)' # Stop and Remove all containers
+dri() { docker rmi $(docker images -q); } # Remove all images
+dbu() { docker build -t=$1 .; } # Dockerfile build, e.g., $dbu tcnksm/test
+dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; } # Show all alias related docker
+dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; } # Bash into running container
+
+alias vscodefix='sudo chown -R $USER ~/Library/Caches/com.microsoft.VSCode.ShipIt/ && xattr -dr com.apple.quarantine /Applications/Visual\ Studio\ Code.app'

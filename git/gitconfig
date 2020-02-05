@@ -111,7 +111,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+	excludesfile = /Users/josh/.yadr/git/gitignore
 [advice]
   statusHints = false
 [diff]
@@ -125,8 +125,16 @@
   enabled = true
 [include]
   path = .gitconfig.user
-[credential]
-  helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [user]
-  name = Josh Ginger-Goodson
-  email = josh@gingergoodson.com
+	name = Josh Ginger-Goodson
+	email = josh.goodson@bunchball.com
+[commit]
+	template = /Users/josh/.stCommitMsg
+[credential]
+	helper = osxkeychain
