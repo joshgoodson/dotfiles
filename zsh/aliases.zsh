@@ -222,7 +222,7 @@ alias dbmd='spring rake db:migrate:down'
 alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
-alias brewu='brew update  && brew upgrade && brew cleanup && brew doctor'
+alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 
 # Python and Pip
 alias pipl='pip list'
